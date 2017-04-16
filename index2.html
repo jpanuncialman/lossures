@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.35.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.35.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
+
+<div id='map'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoianBhbnVuY2lhbG1hbiIsImEiOiJjajFrc2NkbHkwMXByMnFvaDd0OHVxb2twIn0.xHyKf0IMLBqTjQQFsmIzWw';
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/jpanuncialman/cj1kxwnch00012rte3pokz7nx',
+    center: [-73.96, 40.71],
+    zoom: 14.75
+});
+
+
+//Los Sueres Area Polygon
+/*
+map.on('load', function () {
+
+    map.addLayer({
+        'id': 'route',
+        'type': 'line',
+        'source': {
+            'type': 'geojson',
+            'data': {
+                'type': 'Feature',
+                'geometry': {
+                    'type': 'LineString',
+                    'coordinates': [
+                        [-73.966100, 40.716227],
+                        [-73.964705, 40.717520],
+                        [-73.968546, 40.710843],
+                        [-73.968310, 40.706899],
+                        [-73.950425, 40.706712],
+                        [-73.951659, 40.714104],
+                        [-73.956015, 40.714039],
+                        [-73.960532, 40.715300]
+                        ]
+                }
+            }
+        },
+        'layout': {
+            "line-join": "round",
+            "line-cap": "round"          
+        },
+        'paint': {
+            'line-color': '#088',
+            'line-width': 8,
+            'line-opacity': 0.5
+        }
+    });
+});
+
+*/
+
+
+
+</script>
+
+<style>
+
+#marker {
+    background-image: url('img/downarrowpng.png');
+    background-position: center;
+    background-size: cover;
+    width: 32px;
+    height: 19px;
+    border-radius: 0%;
+    cursor: pointer;
+}
+
+.mapboxgl-popup {
+    max-width: 200px;
+}
+
+#marker-instagram {
+    background-image: url('img/insta.png');
+    background-position: center;
+    background-size: cover;
+    width: 32px;
+    height: 19px;
+
+
+    border-radius: 0%;
+    cursor: pointer;
+}
+
+}
+    
+</style>
+
+
+<script>
+
+var monument = [-73.963503, 40.713342];
+var monument2 = [-73.963266, 40.711401];
+var instagram = [-73.958985, 40.712354];
+
+// create the popup
+var popup = new mapboxgl.Popup({offset: 25}).setHTML('<h2>Berry Street Garden</h2>').setText('This garden, run by the Berry Wythe South Second Street Block Association, has been around for two decades.');
+    //.setHTML('<img src="http://bureaux.petitemort.org/wp-content/uploads/2012/07/1BerryStGarden-R0023488.jpg">');
+
+var popup2 = new mapboxgl.Popup({offset: 25}).setText("Opened by composer and performer Gerry Eastman in 1981, this nonprofit jazz institution caters to the local community but occasionally offers touring talent and other performers"); 
+
+var popup3 = new mapboxgl.Popup({offset: 25}).setText("Sample story."); 
+
+// create DOM element for the marker
+var el = document.createElement('div');
+el.id = 'marker';
+
+var el2 = document.createElement('div');
+el2.id = 'marker';
+
+var el3 = document.createElement('div');
+el3.id = 'marker-instagram';
+
+
+
+// create the marker
+new mapboxgl.Marker(el, {offset:[-25, -25]})
+    .setLngLat(monument)
+    .setPopup(popup) // sets a popup on this marker
+    .addTo(map);
+
+new mapboxgl.Marker(el2, {offset:[-25, -25]})
+    .setLngLat(monument2)
+    .setPopup(popup2) // sets a popup on this marker
+    .addTo(map);
+
+new mapboxgl.Marker(el3, {offset:[-25, -25]})
+    .setLngLat(instagram)
+    .setPopup(popup3) // sets a popup on this marker
+    .addTo(map);
+
+</script>
+
+</body>
+</html>
